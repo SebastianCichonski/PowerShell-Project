@@ -1,0 +1,38 @@
+backup
+-otrzymuje pliki z get-sourceFile, liste indexów deduplikacji
+
+wylicza hash pliku
+sprawdza w liscie indexów
+jeśli nie ma pliku i hasha -> kopiuje plik i zapisuje nowy index
+jeśli jest plik z innym hashem -> aktualizuje index
+jeśli jest inny plik ten sam hash (dedup) -> dodajemy nowy index, nie kopiujemy pliku
+
+####Deduplkacja
+Get-HashSHA256
+Load-DedupIndex
+Save-DedupIndex
+Update-DedupIndex
+Classify-FileStatus
+
+#####Backup
+Initiaize-BackupEnvironment
+Load-BackupSettings
+Get-SourceFile
+
+
+$settings = Load-BackupSettings 
+Initialize-BackupEnvironment -settingsFile $settings
+$sourceFiles = Get-SourceFiles -settingsFile $settings
+
+foreach($file in $sourceFiles) {
+	$index = Load-DedupIndex -dedupIndexPath "D:\BackupFolder\Share1\Metadata\dedup_index.json" 
+	$status = Classify-FileStatus -file $file.FullName -dedupIndex $index
+
+
+	
+}
+
+$dedup = Load-DedupIndex -dedupIndexPath "D:\BackupFolder\Share1\Metadata\dedup_index.json" 
+
+
+ 

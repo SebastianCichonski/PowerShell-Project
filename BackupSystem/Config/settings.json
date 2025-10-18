@@ -1,0 +1,38 @@
+{
+  "SourceFolders": [
+    {
+      "Path": "D:\\Share",
+      "Include": ["*.docx", "*.pdf", "*.xlsx", "*.txt"],
+      "Exclude": ["Temp", "Drafts"]
+    },
+    {
+      "Path": "D:\\Share1",
+      "Include": ["*.jpg", "*.bmp"],
+      "Exclude": []
+    }
+  ],
+  "BackupRoot": "D:\\BackupFolder",
+  "MaxVersions": 5,
+  "Deduplication": {
+    "Enabled": true,
+    "HashAlgorithm": "SHA256",
+    "UseSymlinks": false
+  },
+  "Versioning": {
+    "Enabled": true,
+    "IgnoreMetadataChanges": true
+  },
+  "RetentionPolicy": {
+    "MaxAgeDays": 90,
+    "MaxSizeGB": 50
+  },
+  "Scheduler": {
+    "Enabled": true,
+    "Time": "02:00",
+    "Days": ["Monday", "Wednesday", "Friday"]
+  },
+  "Logging": {
+    "Level": "INFO",
+    "LogFile": "Logs\\backup_log.txt"
+  }
+}
