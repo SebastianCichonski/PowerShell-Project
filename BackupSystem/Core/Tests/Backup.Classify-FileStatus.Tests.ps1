@@ -1,15 +1,21 @@
 <#
-Pester tests for Classify-FileStatus function.
-These tests assume Pester v5.
+Testy Pester dla funkcji Classify-FileStatus.
+Te testy zakładają Pester w wersji 5.
+Dot-source'ują plik modułu `Deduplication.psm1` oraz mockują `Get-FileHashSHA256`, aby kontrolować wyniki hashy.
 
-They dot-source the `Backup.ps1` module file and mock `Get-FileHashSHA256` to control hash results.
+Testowane są następujące scenariusze:
+1. Gdy indeks deduplikacji jest pusty, funkcja powinna zwrócić 'New'.
+2. Gdy ścieżka pliku nie istnieje, ale hash istnieje w indeksie, funkcja powinna zwrócić 'Duplicate'.
+3. Gdy ścieżka pliku istnieje i hash się zgadza, funkcja powinna zwrócić 'Unchanged'.
+4. Gdy ścieżka pliku istnieje, ale hash się zmienił, funkcja powinna zwrócić 'Modified'.
 #>
 
 Describe 'Classify-FileStatus' {
 
     BeforeAll {
         # Dot-source the script under test
-        . "$PSScriptRoot\..\Backup.ps1"
+        . "$PSScriptRoot\..\Deduplication\Functions\Get-FileHashSHA256.ps1"
+        . "$PSScriptRoot\..\Deduplication\Functions\Classify-FileStatus.ps1"
     }
 
     It 'returns New when dedup index is empty' {
