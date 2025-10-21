@@ -2,8 +2,14 @@
 
 function Classify-FileStatus {
     param(
-        [object] $file, 
-        [object] $dedupIndex
+        [Parameter(Mandatory)]
+        [ValidateNotNullOrEmpty()] 
+        [ValidateScript( { Test-Path -Path $_.FullName } )]
+        [Object]$file, 
+
+        [Parameter(Mandatory)] 
+        [ValidateNotNullOrEmpty()]
+        [Object]$dedupIndex
     )
 
     $fileHash = Get-FileHashSHA256 -filePath $file.FullName
