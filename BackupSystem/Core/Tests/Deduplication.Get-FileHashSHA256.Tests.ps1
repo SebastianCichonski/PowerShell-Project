@@ -1,4 +1,16 @@
+<#
+Testy Pester dla funkcji Get-FileHashSHA256.
+Te testy zakładają Pester w wersji 5.
+Dot-source'ują plik modułu `Get-FileHashSHA256.ps1`.
 
+Testowane są następujące scenariusze:
+1. Obliczanie tego samego hasha dla identycznych plików.
+2. Obliczanie tego samego hasha dla kopii pliku.
+3. Obliczanie różnych hashy, gdy plik uległ zmianie.
+4. Obliczanie różnych hashy dla różnych plików.
+5. Rzucanie błędu dla nieistniejących ścieżek plików.
+6. Rzucanie błędu dla pustych lub null ścieżek plików.      
+#>
 
 Describe Get-FileHashSHA256 {
     BeforeAll{
