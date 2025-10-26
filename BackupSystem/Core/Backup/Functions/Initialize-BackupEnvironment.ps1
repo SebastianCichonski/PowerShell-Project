@@ -1,7 +1,9 @@
 # Funkcja inicjalizująca środowisko backupu
 
 function Initialize-BackupEnvironment {
-    param ([object] $settingsFile)
+    param (
+            [object] $settingsFile = ".\..\..\Config\settings.json"
+          )
 
     $backupRoot = $settingsFile.BackupRoot
     $sourceFolders = $settingsFile.SourceFolders

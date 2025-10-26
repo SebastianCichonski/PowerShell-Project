@@ -12,7 +12,5 @@ function Backup-Files {
         [String]$destinationPath
     )
 
-    if(Test-Path -Path $sourcePath) {
         Copy-Item -Path $sourcePath -Destination $destinationPath -Force
-    }
 }

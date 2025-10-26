@@ -1,11 +1,12 @@
 # Funcja ładuje indeks deduplikacji z pliku JSON
 
 function Load-DedupIndex {
-    param ([string] $dedupIndexPath)
-
-    if (-not(Test-Path $dedupIndexPath)) {
-        throw "File 'dedup_index.json' not exist."
-    }
+    param (
+            [Parameter(Mandatory)]
+            [ValidateScript( { Test-Path -Path $_ } )]
+            [ValidateNotNullOrEmpty()]
+            [string] $dedupIndexPath
+        )
 
     $dedupIndex = Get-Content -Path $dedupIndexPath -Raw | ConvertFrom-Json
         
@@ -14,4 +15,4 @@ function Load-DedupIndex {
         $dedupIndex | Add-Member -MemberType NoteProperty -Name "Files" -Value @()
     }
     return $dedupIndex        
-}
+}       

@@ -3,7 +3,7 @@
 function Process-File {
     param(
         [object] $sourceFiles, 
-        [object] $dedupIndex, 
+        [ref] $dedupIndex, 
         [string] $backupRoot
     )
     foreach ($file in $sourceFiles) {
@@ -18,7 +18,7 @@ function Process-File {
 
         switch ($status) {
             "New" {
-                Backup-File -path $file.SourcePath -destination 
+                Backup-File -path $file.SourcePath -destination $destinationPath
                 Update-DedupIndex
             }
             "Modified" {
