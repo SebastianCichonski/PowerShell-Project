@@ -2,11 +2,12 @@
 Import-module ".\Deduplication\Deduplication.psm1"
 Import-module ".\Backup\Backup.psm1"
 
-# initializacja środowiska backupu
-Initialize-BackupEnvironment
 
 # załadowanie ustawień backupu
 $backupSettings = Load-BackupSettings -settingsFilePath ".\..\Config\settings.json"
+
+# initializacja środowiska backupu
+Initialize-BackupEnvironment -settingsFile $backupSettings.BackupRoot
 
 # pobranie listy plików źródłowych do backupu
 $sourceFiles = Get-SourceFiles -settingsFile $backupSettings

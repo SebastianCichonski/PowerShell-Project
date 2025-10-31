@@ -2,7 +2,9 @@
 
 function Initialize-BackupEnvironment {
     param (
-        [object] $settingsFile = ".\..\..\..\Config\settings.json"
+        [parameter(Mandatory)]
+        [ValidateNotNullOrEmpty()]
+        [object] $settingsFile
     )
 
     $backupRoot = $settingsFile.BackupRoot
