@@ -4,7 +4,7 @@ function Initialize-BackupEnvironment {
     param (
         [parameter(Mandatory)]
         [ValidateNotNullOrEmpty()]
-        [object] $settingsFile
+        [object] $settingsFile 
     )
 
     $backupRoot = $settingsFile.BackupRoot

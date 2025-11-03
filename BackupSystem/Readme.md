@@ -98,7 +98,7 @@ Co daje takie rozwiązanie?:
 - bezpieczeństwo - bezpieczne zmienne lokalne
 - skalowalność - gotowe do użycia w innych projektach
 - dokumentacja - czytelna w plikach poszczególnych funkcji
-- 
+  
 ### 5.2 Opis modułów
 
 #### 🔹 Deduplication
@@ -137,7 +137,7 @@ Co daje takie rozwiązanie?:
     - dodanie nowego pliku,
     - modyfikacja istniejącego,
     - utworzenie kopii pliku przed backupem (sprawdzenie deduplikacji),
-    - brak zmian (sprawdzenie pominięcia).\
+    - brak zmian (sprawdzenie pominięcia).
 
 Testy krytycznych funkcji:
   - `Deduplication.Classify-FileStatus.Tests.ps1` — testy jednostkowe klasyfikacji statusu plików (New, Duplicate, Unchanged, Modified). Testy używają izolacji (mockowanie lub dot-sourcing zależności) tak, aby nie polegać na rzeczywistych plikach.
@@ -155,4 +155,4 @@ Testy krytycznych funkcji:
 ## 9. Autor
 
 Projekt stworzony przez [Sebastian Cichoński](https://github.com/SebastianCichonski) - [sebqu@outlook.com](mailto.sebqu@outlook.com) - 
-2024
+10.2025
